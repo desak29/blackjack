@@ -86,7 +86,10 @@ $(document).ready(function(){
       function placeCard(card,who,slot){
           var currId='#' + who+('-card-')+slot;
           $(currId).removeClass('empty');
-          $(currId).html(card);
+          $(currId).html('<img src="image/'+card+'.png">')
+          
+   
+       
       }
      
       function shuffleDeck()

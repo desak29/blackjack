@@ -8,7 +8,9 @@
 .card{
     color:black;
     background-color:white;
-    height:120px;
+    padding-right: 0px;
+padding-left: 0px;
+
  
  
   
@@ -44,4 +46,7 @@
     font-size:30px;
     
     
+}
+img{
+    width:100%;
 }

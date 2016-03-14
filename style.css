@@ -1,0 +1,41 @@
+.the-table{
+    background-color:green;
+    border-radius:10px;
+    margin-top:30px;
+    padding:30px 0px;
+    border:5px black;
+}
+.card{
+    color:black;
+    background-color:white;
+    height:120px;
+ 
+ 
+  
+    
+}
+.col-sm-2.card{
+    width:11%;
+       margin:10px;
+    
+    
+}
+.card.empty{
+    background:#DDD;
+    border:dashed 1px black ;
+}
+.dealer-total-wrapper,.player-hand-wrapper{
+    color:white;
+    font-size:10px;
+}
+.dealer-total-wrapper span,.player-hand-wrapper span{
+   display:block;
+   text-align:center;
+}
+.action-buttons button{
+    width:100%;
+    background-color:#0f0f0f;
+    color:white;
+    border-radius:4px;
+    
+}

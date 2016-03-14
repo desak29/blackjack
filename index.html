@@ -1,0 +1,104 @@
+
+<!--! create an element for our table, turn it green with a boarder
+2. create an element for the dealers hand and the players hand 
+3.create an element for each card (max6) inside both dealer and player-->
+4.create and element for dealer and player totals
+5. assign classes to each so they can be styled and targeted 
+6. assign classs of "empty" to each card on load and then style
+
+javasctipy
+1.setup deal(onclick
+2. deal should call shuffleDeck
+return a shuffled deck
+)
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="http://www.digitalcrafts.com/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Digital Crafts Week 3 BlackJack</title>
+    <!--why bootstrap: It auto grids so that your web app may be viewed fluidly-->
+    <!--no matter how wide the page is their are 12 columns that can be worked with -->
+    <!--everything works off this system-->
+    <!--prevoiusly <div class="ttt"> instead of "ttt" we can use presorted classes that run through bootstrap css-->
+    
+
+    <!-- Bootstrap!important! -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+    <div class ="container">
+        <div class ="row">
+            <div class ="the-table col-sm-8 col-sm-offset-2">
+                <div class ="row">
+                 <div class="dealer-hand-wrapper col-sm-12">
+             
+                          <div class="dealer-total-wrapper col-sm-2">
+                          Dealer Total<span class="dealer-total">0</span>
+                           
+                           </div>
+                           <div id="dealer-card-one" class= "card empty col-sm-2"></div>
+                            <div id="dealer-card-two" class= "card empty col-sm-2"></div>
+                             <div id="dealer-card-three" class= "card empty col-sm-2"></div>
+                              <div id="dealer-card-four" class= "card empty col-sm-2"></div>
+                               <div id="dealer-card-five" class= "card empty col-sm-2"></div>
+                                <div id="dealer-card-six" class= "card empty col-sm-2"></div>
+                  </div>    
+            </div>
+            
+             <div class ="row">
+                 <div class="player-hand-wrapper col-sm-12">
+                     <div class="player-total-wrapper col-sm-2">
+                        Player Total<span class="player-total">0</span>
+                     
+                       </div>
+                      
+                             <div id="player-card-one" class= "card empty col-sm-2"></div>
+                           <div id="player-card-two" class= "card empty col-sm-2"></div>
+                            <div id="player-card-three" class= "card empty col-sm-2"></div>  
+                             <div id="player-card-four" class= "card empty col-sm-2"></div>
+                              <div id="player-card-five" class= "card empty col-sm-2"></div>
+                               <div id="player-card-six" class= "card empty col-sm-2"></div>
+            </div>
+            
+        </div>
+             <div class ="row action-buttons"> 
+                 <div class="col-sm-2 col-sm-offset-2">
+                     <button id="deal-button">Deal</button>
+                     </div>
+                 <div class="col-sm-2 col-sm-offset-2">
+                     <button id="hit-button">Hit</button>
+                     </div>
+                 <div class="col-sm-2 col-sm-offset-1">
+                     <button id="stand-button">Stand</button>
+                     </div>
+        
+        
+        
+     </div>
+     </div>
+        </div>
+            
+    
+    
+    
+ 
+ 
+ <script src="scripts.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+     
+</body>
+
+</html>

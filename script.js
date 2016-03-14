@@ -36,17 +36,31 @@ $(document).ready(function(){
           placeCard(dealerHand[1],'dealer','two');
           calculateTotal(playerHand,'player');
           calculateTotal(dealerHand,'dealer');
+          if ((playerTotal===12)&&(dealerTotal=21)){
+              draw=true;
+              checkWin();
+              message.innerHTML ="Its a Draw!";
+              return;
+        
+          }else if(dealerTotal===21){
+              checkWin();
+              message.innerHTML ="Dealer Has Blacjack!";
+              return;
+          }else if(playertotal===21){
+              checkWin();
+              message.innerHTML="Blackjack!You Win!!";
+              return;
+          }
+        // //  REMOVE DEAL AND CLEAR BET BUTTON
+        //   disableAllBttns();
+          
           
           
        
           
       }
-      function placeCard(card,who,slot){
-          var currId='#' + who+('-card-')+slot;
-          $(currId).removeClass('empty');
-          $(currId).html(card);
-      }
-      function calculateTotal(hand,who){
+    //   hand, who are placeholder variables for player or dealer above
+       function calculateTotal(hand,who){
           var total=0;
           for(i=0;i<hand.length;i++)
           {
@@ -55,9 +69,15 @@ $(document).ready(function(){
               
               console.log(cardValue)
           }
-          var idToGet= '.'+who+'-total'
+          var idToGet= '.'+who+'-total';
           $(idToGet).html(total);
       }
+      function placeCard(card,who,slot){
+          var currId='#' + who+('-card-')+slot;
+          $(currId).removeClass('empty');
+          $(currId).html(card);
+      }
+     
       function shuffleDeck()
       {
         //   fill the deck in order, for now deck is made up of 52 cards 4 suits:h,s,d,call
@@ -91,5 +111,5 @@ $(document).ready(function(){
             }
       
       return(theDeck);
-      }
+       }
      

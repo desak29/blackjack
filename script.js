@@ -34,6 +34,8 @@ $(document).ready(function(){
           placeCard(dealerHand[0],'dealer','one');
            placeCard(playerHand[1],'player','two');
           placeCard(dealerHand[1],'dealer','two');
+          calculateTotal(playerHand,'player');
+          calculateTotal(dealerHand,'dealer');
           
           
        
@@ -43,6 +45,18 @@ $(document).ready(function(){
           var currId='#' + who+('-card-')+slot;
           $(currId).removeClass('empty');
           $(currId).html(card);
+      }
+      function calculateTotal(hand,who){
+          var total=0;
+          for(i=0;i<hand.length;i++)
+          {
+              var cardValue= Number(hand[i].slice(0,-1));
+              total += cardValue;
+              
+              console.log(cardValue)
+          }
+          var idToGet= '.'+who+'-total'
+          $(idToGet).html(total);
       }
       function shuffleDeck()
       {

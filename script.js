@@ -7,6 +7,12 @@
 var theDeck=[];
 var placeInDeck=0;
 
+// Total Score
+var playerTotalCards=2;
+var dealerTotalCards=2;
+
+
+
 
 $(document).ready(function(){
     $('button').click(function(){
@@ -34,9 +40,10 @@ $(document).ready(function(){
           placeCard(dealerHand[0],'dealer','one');
            placeCard(playerHand[1],'player','two');
           placeCard(dealerHand[1],'dealer','two');
-          calculateTotal(playerHand,'player');
-          calculateTotal(dealerHand,'dealer');
-          if ((playerTotal===12)&&(dealerTotal=21)){
+          playerTotal=calculateTotal(playerHand,'player');
+          dealerTotal=calculateTotal(dealerHand,'dealer');
+        
+          if ((playerTotal===21)&&(dealerTotal=21)){
               draw=true;
               checkWin();
               message.innerHTML ="Its a Draw!";
@@ -44,9 +51,9 @@ $(document).ready(function(){
         
           }else if(dealerTotal===21){
               checkWin();
-              message.innerHTML ="Dealer Has Blacjack!";
+              message.innerHTML ="Dealer Has Blackjack!";
               return;
-          }else if(playertotal===21){
+          }else if(playerTotal===21){
               checkWin();
               message.innerHTML="Blackjack!You Win!!";
               return;
@@ -71,6 +78,10 @@ $(document).ready(function(){
           }
           var idToGet= '.'+who+'-total';
           $(idToGet).html(total);
+          if(total>21)
+          bust('whosturn');
+        //   maybe a place to deal with over 21
+        
       }
       function placeCard(card,who,slot){
           var currId='#' + who+('-card-')+slot;
@@ -110,6 +121,69 @@ $(document).ready(function(){
                     }
             }
       
-      return(theDeck);
+  
        }
+       
+    function hit(){
+        var slot='';
+        if(playerTotalCards==2){slot='three';}
+        // same as player.Cards.length..
+        else if(playerTotalCards==3){slot='four';}
+    else if(playerTotalCards==4){slot='five';}
+    else if(playerTotalCards==5){slot='six';}
+    placeCard(theDeck[placeInDeck],'player',slot);
+    playerHand.push(theDeck[placeInDeck]);
+    placeInDeck++;
+    playerTotalCards++;
+  
+    calculateTotal(playerHand,"player")
+    }
+    function stand(){
+        var dealerTotal=$('.dealer-total').html();
+        while(dealerTotal<17)
+        { if(dealerTotalCards==2)
+            {slot='three';}
+        // same as player.Cards.length..
+        else if(dealerTotalCards==3){slot='four';}
+    else if(dealerTotalCards==4){slot='five';}
+    else if(dealerTotalCards==5){slot='six';}
+    placeCard(theDeck[placeInDeck],'dealer',slot);
+    dealerHand.push(theDeck[placeInDeck]);
+    dealerTotalCards++;
+    placeInDeck++;
+    calculateTotal(dealerHand,'dealer');
+    dealerTotal=$('.dealer-total').html();
+            
+        }
+        checkWin()
+        // $('.dealer-total').html();
+    }
+    
+    
+ function checkWin(){
+     var playerHas=Number($('.player-total'));
+     var dealerHas=Number($('.dealer-total').html());
+     if (dealerHas>21){ 
+        //  the dealer has busted
+         $('#message').html('you have beaten the dealer!');
+     }else{
+         if(playerHas> dealerHas){
+            //  player won
+             $('#message').html('the player has won');
+         }else if(dealerHas>playerHas){
+              $('#message').html('the dealer has won');
+            //  dealer won
+         }else{
+            //  tie
+         }
+     }
+     
+ }
+ function bust(who)
+ {if(who==='player'){
+     $('#message').html('Dealer has busted')
+ }else{
+      $('#message').html('the player has busted')
+ }
+}
      

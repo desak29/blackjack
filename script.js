@@ -69,12 +69,19 @@ $(document).ready(function(){
     //   hand, who are placeholder variables for player or dealer above
        function calculateTotal(hand,who){
           var total=0;
+          var acesCount=0;
           for(i=0;i<hand.length;i++)
           {
               var cardValue= Number(hand[i].slice(0,-1));
+              if((cardValue ==11)||(cardValue==12)||(cardValue==13)){
+                  cardValue=10;
+              }if(cardValue ==1){
+                  cardValue=11;
+              }console.log(cardValue)
               total += cardValue;
+              if(total>21){total-10}
               
-              console.log(cardValue)
+              
           }
           var idToGet= '.'+who+'-total';
           $(idToGet).html(total);
@@ -159,7 +166,7 @@ $(document).ready(function(){
             
         }
         checkWin()
-        // $('.dealer-total').html();
+        $('.dealer-total').html();
     }
     
     
@@ -188,5 +195,13 @@ $(document).ready(function(){
  }else{
       $('#message').html('the player has busted')
  }
+}
+function reset(){
+    $('.card').addClass('empty');
+    $('.card').html('');
+    $('.playerTotal').html((0));
+     $('.dealerTotal').html((0));
+     $('#message').html('');
+     $('#hit-button')
 }
      

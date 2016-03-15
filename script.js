@@ -3,13 +3,39 @@
 // 2. set up a players starting ErrorEventHandler
 // 3. place cards in correct spot
 
-
+// fix game win issues fix button game issues add betting features add rebet featurest
 var theDeck=[];
 var placeInDeck=0;
 
-// Total Score
+// Total  number of cards  dealt
 var playerTotalCards=2;
 var dealerTotalCards=2;
+
+var placeInDeck = 0;
+var bankroll = 500;
+var bet = 0;
+var prevBet = 0;
+// IS A GAME BEING PLAYED
+// var won = false;
+// var draw = false;
+// var playing = false;
+
+// ARRAY FOR PLAYERS HANDS
+// var playerHand;
+// var dealerHand;
+// IF PLAYER BUST BOOLEAN
+// var dealerBust = false;
+// var playerBust = false;
+// // IF PLAYER STANDS 
+// var playerStand = false;
+// // PLAYER TOTALS
+// var playerTotal = 0;
+// var dealerTotal = 0;
+// SHORTCUTS FOR ELEMENT DIVS AND BUTTONS
+var message = document.getElementById("message");
+var buttons = document.getElementsByClassName("game-buttons");
+
+
 
 
 
@@ -19,6 +45,10 @@ $(document).ready(function(){
         var clickedButton =($(this).attr('id'));
         if(clickedButton =='deal-button'){
             deal();
+            // $("#bet-button").removeClass("hidden");
+            //   $("#stand-button").removeClass("hidden");
+            // $("#hit-button").removeClass("hidden");
+            // $('#deal-button').removeClass("active")
             
         }else if(clickedButton=='hit-button'){
             hit();
@@ -42,8 +72,8 @@ $(document).ready(function(){
           placeCard(dealerHand[1],'dealer','two');
           playerTotal=calculateTotal(playerHand,'player');
           dealerTotal=calculateTotal(dealerHand,'dealer');
-        
-          if ((playerTotal===21)&&(dealerTotal=21)){
+          checkWin()
+          if ((playerTotal===21)&&(dealerTotal==21)){
               draw=true;
               checkWin();
               message.innerHTML ="Its a Draw!";
@@ -57,15 +87,29 @@ $(document).ready(function(){
               checkWin();
               message.innerHTML="Blackjack!You Win!!";
               return;
+              
           }
         // //  REMOVE DEAL AND CLEAR BET BUTTON
+        document.getElementById('deal-button').classList.remove('active');
+        document.getElementById('deal-button').classList.add('hidden');
+            document.getElementById('clear-bet-button').classList.remove('active');
+        document.getElementById('clear-bet-button').classList.add('hidden');
+        // show hit & stand button
+	document.getElementById('hit-button').classList.remove("hidden");
+	document.getElementById('hit-button').classList.add('active');
+	document.getElementById('stand-button').classList.remove('hidden');
+	document.getElementById('stand-button').classList.add('active');	
+
+	// document
+}
+
         //   disableAllBttns();
           
           
           
        
           
-      }
+      
     //   hand, who are placeholder variables for player or dealer above
        function calculateTotal(hand,who){
           var total=0;
@@ -79,7 +123,7 @@ $(document).ready(function(){
                   cardValue=11;
               }console.log(cardValue)
               total += cardValue;
-              if(total>21){total-10}
+              if((total>21)&&(cardValue="1")){total-10}
               
               
           }
@@ -93,6 +137,14 @@ $(document).ready(function(){
       function placeCard(card,who,slot){
           var currId='#' + who+('-card-')+slot;
           $(currId).removeClass('empty');
+          $(currId).html('<img src="image/'+card+'.png">')
+          
+   
+       
+      }
+         function placeCard1(card,who,slot){
+          var currId='#' + who+('-card-')+slot;
+          $(currId).addClass('hidden');
           $(currId).html('<img src="image/'+card+'.png">')
           
    

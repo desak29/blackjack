@@ -48,6 +48,9 @@ padding-left: 0px;
 #message{
     color:white;
     font-size:30px;
+    background-color:black;
+    text-align:center
+    border: 5px dotted red;
     
     
 }

@@ -82,3 +82,55 @@ body {
      
      	
 }
+.bet-wrapper {
+	line-height: 50%;
+	vertical-align: middle;
+	text-align: center;
+}
+	#total-bet-wrapper {
+		display: inline-block;
+		font-size: 18px;
+		color: white;
+		margin-left: 50px;
+	}
+
+.chip {
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		color: white;
+		border-radius: 200%;
+		border:4px dashed black;
+		/*background-color: white;*/
+		line-height: 300%;
+		vertical-align: middle;
+}	
+	.chip .inner-chip  {
+			border:1px solid black;
+			border-radius: 200%;
+	}
+	.chip.five-chip {
+		background-color: #a01010;
+	}
+
+	.chip.ten-chip {
+		background-color: #1313ab;
+	}
+
+	.chip.twenty-five-chip {
+		background-color: #094609;
+	}
+
+	.chip.hundred-chip {
+		background-color: #272626;
+		border-color: white;
+	}
+
+.chip-stack {
+	position: absolute;
+	display: inline;
+	margin-left: 25px;
+}
+	.chip-stack .chip {
+		position: absolute;
+	}

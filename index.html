@@ -37,6 +37,9 @@ a shuffled deck )
     <div class="container">
         <div class="row">
             <div class="the-table col-sm-8 col-sm-offset-2">
+                <div class="tokens">
+					Bankroll $<span id="bankroll">$500</span>
+				</div>
                 <div class="row">
                     <div class="dealer-hand-wrapper col-sm-12">
 
@@ -106,20 +109,14 @@ a shuffled deck )
               <div class="row">
                     <div class="bet-wrapper">
 				<!-- chips divs -->
-				<div class="chip five-chip" onclick="betValue(5)"><div class="inner-chip"><span>5</span></div></div>
-				<div class="chip ten-chip" onclick="betValue(10)"><div class="inner-chip"><span>10</span></div></div>
-				<div class="chip twenty-five-chip" onclick="betValue(25)"><div class="inner-chip"><span>25</span></div></div>
-				<div class="chip hundred-chip" onclick="betValue(100)"><div class="inner-chip"><span>100</span></div></div>
+				<button class="chip five-chip" onclick="betValue(5)"><div class="inner-chip"><span>5</span></div></button>
+				<button class="chip ten-chip" onclick="betValue(10)"><div class="inner-chip"><span>10</span></div></button>
+				<button  class="chip twenty-five-chip" onclick="betValue(25)"><div class="inner-chip"><span>25</span></div></button>
+				<button class="chip hundred-chip" onclick="betValue(100)"><div class="inner-chip"><span>100</span></div></button>
 
 				<!-- total bets div -->
-				<div id="total-bet-wrapper">Total Bet:  <span id="total-bet">0</span></div>
-				<div class="chip-stack">
-					<div class="chip five-chip"><div class="inner-chip"><span>5</span></div></div>
-					<div class="chip ten-chip"><div class="inner-chip"><span>10</span></div></div>
-					<div class="chip twenty-five-chip"><div class="inner-chip"><span>25</span></div></div>
-					<div class="chip hundred-chip"><div class="inner-chip"><span>100</span></div></div>
-				</div>
-			</div>
+				<div id="total-bet-wrapper">Total Bet:  <span class="total-bet">0</span></div>
+				
         </div>
         </div>
 

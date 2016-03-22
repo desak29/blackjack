@@ -58,7 +58,7 @@ $(document).ready(function(){
             stand();
         }else if(clickedButton=="reset-button"){
             reset();
-        }
+        }else if(clickedButton=="chip five-chip"){}
         
     });    
       });
@@ -201,6 +201,7 @@ $(document).ready(function(){
     calculateTotal(playerHand,"player")
     }
     function stand(){
+        
         var dealerTotal=$('.dealer-total').html();
         while(dealerTotal<17)
         { if(dealerTotalCards==2)
@@ -251,6 +252,39 @@ $(document).ready(function(){
       $('#message').html('the player has busted')
  }
 }
+////////////////////////////
+// betting functions
+
+// add bet to total bet being placed
+function betValue(chipValue) {
+	
+	if((bet + chipValue) <= bankroll) {
+		bet += chipValue;
+	}
+	document.getElementsByClassName("total-bet").innerHTML = bet;
+}
+
+// place a bet
+function placeBet() {
+	playing = true;
+	prevBet = bet;
+	bankroll -= bet;
+	document.getElementById("bankroll").innerHTML = bankroll
+}
+
+// rebet the previous bet
+function rebet() {
+	playing = false;
+	reset();
+	bet = prevBet;
+	document.getElementById("total-bet").innerHTML = bet;
+
+}
+// clear the bet
+function clearBet() {
+	bet = 0;
+	document.getElementById("total-bet").innerHTML = bet;
+}
 
   function reset() {
     //empty the deck
@@ -291,7 +325,7 @@ $(document).ready(function(){
 	document.getElementById('hit-button').classList.add('hidden');
 	document.getElementById('stand-button').classList.remove('active');
 	document.getElementById('stand-button').classList.add('hidden');
-    consolel
+   playing = false;
 
 	// for(i = 0;i < buttons.length;i++){
 	// 	buttons[i].disabled = false;
